@@ -1,5 +1,5 @@
-## Blocmetrics
-# An API Tracking Service and Reporting Tool
+# Blocmetrics
+## An API Tracking Service and Reporting Tool
 
 Blocmetrics will let you track activities on websites.
 
