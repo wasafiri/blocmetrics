@@ -16,19 +16,14 @@ ActiveRecord::Schema.define(version: 20140625014907) do
   create_table "apps", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "app_name"
-    t.text     "app_desc"
+    t.string   "name"
+    t.text     "desc"
   end
 
   create_table "events", force: true do |t|
     t.string   "ip_address"
     t.string   "web_property_id"
     t.string   "action"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "indices", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,9 +4,13 @@ ruby '2.1.2'
 group :development, :test do
 	gem 'rspec-rails', '2.99.0'
 	gem 'factory_girl_rails', '4.4.1'
+	gem 'capybara', '2.3.0'
+	gem 'launchy' #this opens up the page capybara sees
 end
 
 gem 'slim-rails', '2.1.5'
+gem 'grape', github: 'intridea/grape'
+gem 'bootstrap-generators', '~> 3.1.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

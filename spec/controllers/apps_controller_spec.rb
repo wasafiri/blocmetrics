@@ -3,13 +3,13 @@ require 'spec_helper'
 describe AppsController do
 
 	before do
-    	@app = App.new(app_name: "Example App", app_desc: "Does stuff")
+    	@app = App.new(name: "Example App", desc: "Does stuff")
   	end
 
 	subject { @app }
 
-	it { should respond_to(:app_name) }
-    it { should respond_to(:app_desc) }
+	it { should respond_to(:name) }
+    it { should respond_to(:desc) }
     it { should be_valid }
   
 	it "responds successfully with an HTTP 200 status code" do
