@@ -1,0 +1,24 @@
+doctype html
+html
+
+h1 Your Apps
+
+table class="app_categories"
+  thead
+    tr
+      th width="25%"App name
+      th width="40%"App description
+      th width="20%"Date added
+      th width="15%"Actions
+
+  tbody
+    - @apps.each do |app|
+      tr
+        td #{link_to app.name, app}
+        td #{app.desc}
+        td #{pretty_up_time(app)}
+        td #{link_to 'Edit', edit_app_path(app)}  #{link_to 'Destroy', app, data: {:confirm => 'Are you sure?'}, :method => :delete}
+
+br
+
+  button.btn.btn-default.btn-sm #{link_to 'Create New App', new_app_path}

@@ -7,9 +7,11 @@
           li = message
 
   .field.col-md-3
-    = f.text_field :name, class: 'form-control'
+    /= f.label :App_Name
+    = f.text_field :name, class: 'form-control', :placeholder => "Name your app"
   .field.col-md-3
-    = f.text_field :desc, class: 'form-control'
+    /= f.label :App_description
+    = f.text_field :desc, class: 'form-control', :placeholder => "Describe your app"
   .actions
     = f.submit 'Save', class: 'btn btn-success'
 
