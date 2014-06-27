@@ -6,6 +6,7 @@ group :development, :test do
 	gem 'factory_girl_rails', '4.4.1'
 	gem 'capybara', '2.3.0'
 	gem 'launchy' #this opens up the page capybara sees
+	gem 'thin', '1.6.2'
 end
 
 gem 'slim-rails', '2.1.5'
