@@ -8,8 +8,8 @@ feature 'Project manager creates TODO' do
       fill_in 'app_desc', with: 'Contains my blog and other stuff'
     	 click_button 'Save'
     	expect( page ).to have_content('App was added successfully.')
-      # expect( page ).to have_content('My personal website')
-      # expect( page ).to have_content('Contains my blog and other stuff')
+      expect( page ).to have_content('My personal website')
+      expect( page ).to have_content('Contains my blog and other stuff')
   	end
 
   scenario 'With description missing' do
