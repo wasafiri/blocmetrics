@@ -1,5 +1,6 @@
 doctype html
 html
 
-h4 #{@app.name}
-#{@app.desc}
+.div #{@app.name}
+.div #{@app.desc}
+.div #{link_to 'Edit', edit_app_path(@app)}  #{link_to 'Destroy', @app, data: {:confirm => 'Are you sure?'}, :method => :delete}
