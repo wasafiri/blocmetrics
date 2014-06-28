@@ -17,7 +17,7 @@ table class="app_categories"
         td #{link_to app.name, app}
         td #{app.desc}
         td #{pretty_up_time(app)}
-        td #{link_to 'Destroy', app, data: {:confirm => 'Are you sure?'}, :id => "destroy_#{app.id}", :method => :delete}
+        td #{link_to 'Edit', edit_app_path(app)} #{link_to 'Destroy', app, data: {:confirm => 'Are you sure?'}, :id => "destroy_#{app.id}", :method => :delete}
 
 br
 
