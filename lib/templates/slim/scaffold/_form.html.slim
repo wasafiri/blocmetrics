@@ -9,9 +9,9 @@
           li= msg
 <%-  attributes.each do |attribute| -%>
   .form-group
-    = f.label :<%= App.name %>, :class => "col-sm-2 control-label"
+    = f.label :<%= attribute.name %>, :class => "col-sm-2 control-label"
     .col-sm-10
-      = f.<%= attribute.field_type %> :<%= App.desc %>, :class => "form-control"
+      = f.<%= attribute.field_type %> :<%= attribute.name %>, :class => "form-control"
 <%- end -%>
   .form-group
     .col-sm-offset-2.col-sm-10
