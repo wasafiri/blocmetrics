@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :event do
-    ip_address "MyString"
-    web_property_id "MyString"
-    action "MyString"
-    created_at "2014-06-24 21:49:07"
+    ip_address "200.201.202.203"
+    web_property_id "PretendThisIsMyWebPropertyID"
+    action "PretendThisIsMyAction"
+    created_at ""
     updated_at "2014-06-24 21:49:07"
   end
 end
