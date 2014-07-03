@@ -6,7 +6,7 @@ class EventsController < ActionController::Base
     @event = Event.new(event_params)
 
     if @event.save
-      render json: @event, serializer: EventSerializer
+      render json: @event
     else
       render json: @event.errors
     end
