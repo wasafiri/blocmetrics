@@ -7,10 +7,12 @@ group :development, :test do
 	gem 'capybara', '2.3.0'
 	gem 'launchy' #this opens up the page capybara sees
 	gem 'thin', '1.6.2'
+	gem 'timecop'
+	gem 'active_model_serializers'
 end
 
 gem 'slim-rails', '2.1.5'
-gem 'grape', github: 'intridea/grape'
+# gem 'grape', github: 'intridea/grape'
 gem 'bootstrap-generators', '~> 3.1.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

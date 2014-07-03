@@ -5,7 +5,6 @@ FactoryGirl.define do
     ip_address "200.201.202.203"
     web_property_id "PretendThisIsMyWebPropertyID"
     action "PretendThisIsMyAction"
-    created_at ""
-    updated_at "2014-06-24 21:49:07"
+    #no need to handcode the timestamps, activerecord will create them
   end
 end
