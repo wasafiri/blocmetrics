@@ -4,6 +4,7 @@ class EventsController < ActionController::Base
 
   def create
     @event = Event.new(event_params)
+
     if @event.save
       render json: @event
     else
@@ -14,6 +15,6 @@ class EventsController < ActionController::Base
   private
 
   def event_params
-    params.require(:event).permit(:ip_address, :web_property_id, :action, :updated_at)
+    params.require(:event).permit(:ip_address, :web_property_id, :action, :updated_at, :created_at)
   end
 end
