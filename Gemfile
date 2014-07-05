@@ -16,7 +16,7 @@ gem 'slim-rails', '2.1.5'
 gem 'bootstrap-generators', '~> 3.1.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
