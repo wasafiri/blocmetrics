@@ -1,6 +1,5 @@
 class EventsController < ActionController::Base
   respond_to :json
-  respond_to :html
 
   def create
     @event = Event.new(event_params)

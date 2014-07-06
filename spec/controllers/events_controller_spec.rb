@@ -4,8 +4,7 @@ describe EventsController do
 
 	before do
     	@event = Event.new(ip_address: "192.168.9.1", web_property_id: "a5beq67wr",
-    		action: "GET", created_at: "2014-06-24 21:38:40 -0400", 
-    		updated_at: "2014-06-24 22:38:40 -0400")
+    		action: "GET")
   	end
 
 	subject { @event }

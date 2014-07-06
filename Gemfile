@@ -5,18 +5,27 @@ group :development, :test do
 	gem 'rspec-rails', '2.99.0'
 	gem 'factory_girl_rails', '4.4.1'
 	gem 'capybara', '2.3.0'
+	gem 'capybara-email', github: 'dockyard/capybara-email'
 	gem 'launchy' #this opens up the page capybara sees
 	gem 'thin', '1.6.2'
 	gem 'timecop'
 	gem 'active_model_serializers'
+	gem 'letter_opener'
+	# gem 'email_spec'
+	# gem 'action_mailer_cache_delivery'
+	gem 'database_cleaner'
 end
 
 gem 'slim-rails', '2.1.5'
+gem 'sprockets', '2.11.0'
+gem 'devise', '3.2.4'
+gem 'pundit'
+
 # gem 'grape', github: 'intridea/grape'
 gem 'bootstrap-generators', '~> 3.1.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

@@ -14,6 +14,7 @@ feature 'Creating an App' do
 
   scenario 'With description missing' do
       visit new_app_path
+      save_and_open_page
       fill_in 'app_name', with: ''
     	click_button 'Save'
     	expect( page ).to have_content('can\'t be blank')

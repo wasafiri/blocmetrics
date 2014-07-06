@@ -6,6 +6,7 @@ class AppsController < ApplicationController
 
 	def new
 		@app = App.new
+		authorize @app
 	end
 
 	def show
@@ -14,7 +15,7 @@ class AppsController < ApplicationController
 
 	def create
 		@app = App.new(app_params)
-    		if @app.save
+    	if @app.save
 			redirect_to app_path(@app), notice: "App was added successfully."
 		else
 			flash[:error] = "Error adding app. Please try again."

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe AppsController do
+	let(:user) { FactoryGirl.create(:confirmed_user) }
 
 	before do
     	@app = App.new(id: "5000", name: "Example App", desc: "Does stuff")

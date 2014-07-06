@@ -26,15 +26,13 @@ html
           = link_to "Blocmetrics", apps_path, :class => "navbar-brand"
         .collapse.navbar-collapse
           ul.nav.navbar-nav
-            li.active
-              /a href=apps_path
-                | Home
-            li
-              /a href="#about" 
-                | About
-            li
-              /a href="#contact"
-                | Contact
+            li.active.inline-nav
+              - if current_user
+                = link_to "Sign out", destroy_user_session_path, method: :delete
+              - else
+                = link_to "Sign in", new_user_session_path
+              li
+                = link_to "Sign up", new_user_registration_path
     .container
       - flash.each do |name, msg|
         = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do
