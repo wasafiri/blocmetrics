@@ -11,6 +11,7 @@ class AppsController < ApplicationController
 
 	def show
 		@app = App.find(params[:id])
+		authorize @app
 	end
 
 	def create
@@ -21,12 +22,14 @@ class AppsController < ApplicationController
 			flash[:error] = "Error adding app. Please try again."
 			render :new
 		end
+		authorize @app
 	end
 
 	def edit
 		@app = App.find(params[:id])
 		# edit action is responsible for rendering the view
 		# update action is responsible for interacting with the model
+		authorize @app
 	end
 
 	def update
@@ -37,6 +40,7 @@ class AppsController < ApplicationController
 			flash[:error] = "Error updating app. Please try again."
 			render :edit
 		end
+		authorize @app
 	end
 
 	def destroy
@@ -47,6 +51,7 @@ class AppsController < ApplicationController
 		else
 			flash[:error] = "There was an error deleting the app."
 		end
+		authorize @app
 	end
 
 	private
@@ -56,5 +61,4 @@ class AppsController < ApplicationController
 		# using strong_parameters here
 		# more: http://blog.sensible.io/2013/08/17/strong-parameters-by-example.html
 	end
-
 end
