@@ -5,15 +5,14 @@ group :development, :test do
 	gem 'rspec-rails', '2.99.0'
 	gem 'factory_girl_rails', '4.4.1'
 	gem 'capybara', '2.3.0'
-	gem 'capybara-email', github: 'dockyard/capybara-email'
+	# gem 'capybara-email', github: 'dockyard/capybara-email'
 	gem 'launchy' #this opens up the page capybara sees
 	gem 'thin', '1.6.2'
 	gem 'timecop'
 	gem 'active_model_serializers'
 	gem 'letter_opener'
-	# gem 'email_spec'
-	# gem 'action_mailer_cache_delivery'
 	gem 'database_cleaner'
+	gem 'pry'
 end
 
 gem 'slim-rails', '2.1.5'
