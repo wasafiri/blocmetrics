@@ -5,17 +5,18 @@ FactoryGirl.define do
   	sequence(:email) { |n| "thedude#{n}@abides.com" }
   	password "password"
   	password_confirmation "password"
-  end
 
-  factory :confirmed_user, :parent => :user do
-    after(:create) do |user|
-      user.confirm!
+    trait :confirmed do
+      after(:create) do |user|
+        user.confirm!
+      end
     end
-  end
 
-  factory :admin_user, :parent => :confirmed_user do
-    after(:create) do |user|
-      user.update_attribute(:role, 'admin')
+    trait :admin do
+      confirmed
+      after(:create) do |user|
+        user.update_attribute(:role, 'admin')
+      end
     end
   end
 end

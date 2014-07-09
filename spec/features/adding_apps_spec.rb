@@ -4,7 +4,7 @@ require 'capybara/rspec'
 feature 'Creating an App' do
 
   before do
-    sign_in_as!(FactoryGirl.create(:admin_user))
+    sign_in_as!(FactoryGirl.create(:user, :admin))
     visit '/'
   end
 
