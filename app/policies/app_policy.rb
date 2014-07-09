@@ -1,10 +1,5 @@
-class AppPolicy
-  attr_reader :user, :record
-
-  def initialize(user, record)
-    @user = user
-    @record = record
-  end
+class AppPolicy < ApplicationPolicy
+  #class Scope #not sure you need this here, but let's try running the test again
 
   def index?
     false
@@ -15,7 +10,7 @@ class AppPolicy
   end
 
   def create?
-    false
+    #false
     user.present?
   end
 
@@ -24,7 +19,7 @@ class AppPolicy
   end
 
   def update?
-    false
+    #false
     user.present? && (record.user == user || user.role?(:admin))
   end
 
@@ -33,12 +28,12 @@ class AppPolicy
   end
 
   def destroy?
-    false
+    #false
     update?
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
+    record.class
   end
 end
 

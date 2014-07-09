@@ -14,11 +14,8 @@ feature 'Creating A New User' do
     fill_in "Password confirmation", 	:with => "password"
     click_button "Sign up"
     expect( page ).to have_content('A message with a confirmation link has been sent to your email address.')
-    #	sleep 2
-    # email = open_email(user.email)
-		# email.should deliver_to(user.email)
-		# click_link "Confirm My Account"
-		# sleep 2
-
+    email = open_email(user.email)
+		click_first_link_in_email
+    page.should have_content("Your account was successfully confirmed")
   end
 end

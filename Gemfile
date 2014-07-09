@@ -12,6 +12,7 @@ group :development, :test do
 	gem 'active_model_serializers'
 	gem 'letter_opener'
 	gem 'database_cleaner'
+	gem 'email_spec'
 	gem 'pry'
 end
 

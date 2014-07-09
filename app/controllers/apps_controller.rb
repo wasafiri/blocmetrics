@@ -17,10 +17,10 @@ class AppsController < ApplicationController
 	def create
 		@app = App.new(app_params)
     	if @app.save
-			redirect_to app_path(@app), notice: "App was added successfully."
+			redirect_to app_path(@app), notice: "App was added successfully." and return
 		else
 			flash[:error] = "Error adding app. Please try again."
-			render :new
+			render :new and return
 		end
 		authorize @app
 	end
@@ -35,10 +35,10 @@ class AppsController < ApplicationController
 	def update
 		@app = App.find(params[:id])
 		if @app.update_attributes(app_params)
-			redirect_to @app
+			redirect_to @app and return
 		else
 			flash[:error] = "Error updating app. Please try again."
-			render :edit
+			render :edit and return
 		end
 		authorize @app
 	end
@@ -47,7 +47,7 @@ class AppsController < ApplicationController
 		@app = App.find(params[:id])
 		if @app.destroy
 			flash[:notice] = "The app \"#{@app.name}\" was successfully deleted."
-			redirect_to apps_path
+			redirect_to apps_path and return
 		else
 			flash[:error] = "There was an error deleting the app."
 		end
