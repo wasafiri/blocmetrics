@@ -16,6 +16,7 @@ class AppsController < ApplicationController
 
 	def create
 		@app = App.new(app_params)
+		@app.user = current_user
     	if @app.save
 			redirect_to app_path(@app), notice: "App was added successfully." and return
 		else
@@ -46,7 +47,7 @@ class AppsController < ApplicationController
 	def destroy
 		@app = App.find(params[:id])
 		if @app.destroy
-			flash[:notice] = "The app \"#{@app.name}\" was successfully deleted."
+			flash[:notice] = "The app #{@app.name} was successfully deleted."
 			redirect_to apps_path and return
 		else
 			flash[:error] = "There was an error deleting the app."
@@ -57,7 +58,7 @@ class AppsController < ApplicationController
 	private
 
 	def app_params
-		params.require(:app).permit(:name, :desc)
+		params.require(:app).permit(:name, :desc, :user_id)
 		# using strong_parameters here
 		# more: http://blog.sensible.io/2013/08/17/strong-parameters-by-example.html
 	end

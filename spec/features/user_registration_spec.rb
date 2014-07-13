@@ -5,7 +5,7 @@ feature 'Creating A New User' do
 
 	let(:user) { FactoryGirl.build(:user) }
 
-  scenario 'Successfully' do
+  scenario 'successfully' do
   	# binding.pry
   	visit new_user_registration_path
     # save_and_open_page

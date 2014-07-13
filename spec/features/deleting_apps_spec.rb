@@ -1,22 +1,23 @@
 require "spec_helper"
 require 'capybara/rspec'
 
-feature 'Deleting an App' do
-  scenario 'Successfully' do
-# => Either the commented out lines below or the FactoryGirl lines will work.
-#    visit new_app_path
-#    fill_in 'app_name', with: 'My personal website'
-#    fill_in 'app_desc', with: 'Contains my blog and other stuff'
-#    click_button 'Save'
-#    expect( page ).to have_content('App was added successfully.')
-#    click_link_or_button 'Destroy'
-#    expect( page ).to have_content('"My personal website" was successfully deleted.')
-#  end
-#end
-    app = FactoryGirl.create(:app, name: 'My personal website', desc: 'Contains my blog and other stuff')
+feature 'deleting an App' do
+  let!(:app) { FactoryGirl.create(:app, user: admin) }
+  let!(:admin) { FactoryGirl.create(:user, :admin) }
+  let!(:member) { FactoryGirl.create(:user, :confirmed) }
+
+  scenario 'as regular user' do
+    sign_in_as!(member)
+    visit apps_path
+    expect( page ).not_to have_content("Destroy")
+  end
+
+  scenario 'as admin' do
+    sign_in_as!(admin)
     visit apps_path
     expect{
-      click_link("destroy_#{app.id}")
-      }.to change(App,:count).by(-1)
-    end
+      click_link("Destroy")
+      }.to change(App,:count).by(-1) 
+    expect( page ).to have_content("The app #{app.name} was successfully deleted.")
   end
+end

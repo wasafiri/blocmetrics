@@ -15,15 +15,6 @@ describe AppPolicy do
     it { should_not pundit_permit(:destroy) }
   end
 
-  # context "for a confirmed user" do
-  #   let(:user) { FactoryGirl.create(:user) }
-  #   let(:app) { FactoryGirl.create(:app) }
-
-  #   it { should pundit_permit(:show)    }
-  #   it { should pundit_permit(:create)  }
-  #   it { should pundit_permit(:new)     }
-  # end
-
   context "for confirmed users" do
     let(:user) { FactoryGirl.build(:user, :confirmed) }
 
@@ -53,13 +44,13 @@ describe AppPolicy do
 
   context "for an admin user" do
     let(:user) { FactoryGirl.create(:user, :admin)  }
-    let(:app) { FactoryGirl.create(:app)          }
+    let(:app) { FactoryGirl.create(:app)            }
 
-    it { should pundit_permit(:show)              }
-    it { should pundit_permit(:create)            }
-    it { should pundit_permit(:new)               }
-    it { should pundit_permit(:update)            }
-    it { should pundit_permit(:edit)              }
-    it { should pundit_permit(:destroy)           }
+    it { should pundit_permit(:show)                }
+    it { should pundit_permit(:create)              }
+    it { should pundit_permit(:new)                 }
+    it { should pundit_permit(:update)              }
+    it { should pundit_permit(:edit)                }
+    it { should pundit_permit(:destroy)             }
   end
 end
