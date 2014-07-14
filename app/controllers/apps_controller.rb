@@ -5,8 +5,8 @@ class AppsController < ApplicationController
 	end
 
 	def new
-		@app = App.new
-		authorize @app
+	  @app = App.new
+	  authorize @app
 	end
 
 	def show

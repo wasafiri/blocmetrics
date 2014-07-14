@@ -6,9 +6,7 @@ feature 'Creating A New User' do
 	let(:user) { FactoryGirl.build(:user) }
 
   scenario 'successfully' do
-  	# binding.pry
-  	visit new_user_registration_path
-    # save_and_open_page
+    visit new_user_registration_path
     fill_in 'Email',             			:with => user.email
     fill_in "Password",              	:with => "password"
     fill_in "Password confirmation", 	:with => "password"

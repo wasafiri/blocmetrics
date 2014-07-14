@@ -1,7 +1,7 @@
  class AppPolicy < ApplicationPolicy
 
   def index?
-    user.present? && (record.user == user)
+    user.present?
   end
 
   def show?
@@ -9,7 +9,7 @@
   end
 
   def create?
-    user.present?
+    index?
   end
 
   def new?
