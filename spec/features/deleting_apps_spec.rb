@@ -22,7 +22,10 @@ feature 'deleting an App' do
       }.to change(App,:count).by(+1)
     click_link_or_button("Sign out")
     sign_in_as!(member)
-    expect( page ).to have_content("Regular user app delete test")
+    expect{
+      click_link("Destroy")
+      }.to change(App,:count).by(-1)
+    expect( page ).to have_content("The app Regular user app delete test was successfully deleted.")
   end
 
   scenario 'as admin' do
@@ -30,7 +33,7 @@ feature 'deleting an App' do
     visit apps_path
     expect{
       click_link("Destroy")
-      }.to change(App,:count).by(-1) 
+      }.to change(App,:count).by(-1)
     expect( page ).to have_content("The app #{app.name} was successfully deleted.")
   end
 end

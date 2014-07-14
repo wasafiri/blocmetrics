@@ -15,7 +15,7 @@ describe EventsController do
     it { should respond_to(:created_at)}
     it { should respond_to(:updated_at)}
     it { should be_valid }
-  
+
 	it "responds successfully with an HTTP 200 status code" do
 		get :index
 			expect(response).to be_success

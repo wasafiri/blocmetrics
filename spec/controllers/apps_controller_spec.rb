@@ -1,20 +1,20 @@
 require 'spec_helper'
 
 describe AppsController do
-	let(:user) { FactoryGirl.create(:confirmed_user) }
-
+	 @user = let(:user) { FactoryGirl.create(:user, :confirmed) }
 	before do
-    	@app = App.new(id: "5000", name: "Example App", desc: "Does stuff")
+    	@app = App.new(id: "5000", name: "Example App", desc: "Does stuff", user_id: user.id)
     	@app.save
     	# Could also do @app = App.create(id: "5000", name: "Example App", desc: "Does stuff")
+      controller.stub(:current_user){ user }
   	end
 
 	subject { @app }
 
-	it { should respond_to(:name) }
+	  it { should respond_to(:name) }
     it { should respond_to(:desc) }
     it { should be_valid }
-  
+
 	it "responds to GET apps#index with an HTTP 200 successful status code" do
 		get :index
 			expect(response).to be_success
@@ -38,9 +38,10 @@ describe AppsController do
 		end
 
 		it "successfully changes the app attributes" do
-			put :update, id: @app, app: {name: "Renamed Example App", desc: "Does other stuff good too"}
+			put :update, id: @app.id, app: {name: "Renamed", desc: "Does other stuff good too", user_id: user.id}
+      puts @app.inspect
 			@app.reload
-			@app.name.should eq("Renamed Example App")
+			@app.name.should eq("Renamed")
 			@app.desc.should eq("Does other stuff good too")
 		end
 	end
