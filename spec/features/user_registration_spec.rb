@@ -3,7 +3,7 @@ require 'capybara/rspec'
 
 feature 'Creating A New User' do
 
-	let(:user) { FactoryGirl.build(:user) }
+  let(:user) { FactoryGirl.build(:user) }
 
   scenario 'successfully' do
     visit new_user_registration_path
@@ -13,7 +13,7 @@ feature 'Creating A New User' do
     click_button "Sign up"
     expect( page ).to have_content('A message with a confirmation link has been sent to your email address.')
     email = open_email(user.email)
-		click_first_link_in_email
+    click_first_link_in_email
     page.should have_content("Your account was successfully confirmed")
   end
 end
