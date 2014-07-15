@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :apps
 
   def role?(base_role)
-		role == base_role.to_s
-	end
+    role == base_role.to_s
+  end
   
 end
