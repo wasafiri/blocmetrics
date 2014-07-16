@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe EventsController, :type => :api do
 
-	before do
+  before do
     Timecop.freeze(Time.now)
   end
 
