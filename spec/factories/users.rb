@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :user do
-  	sequence(:email) { |n| "thedude#{n}@abides.com" }
-  	password "password"
-  	password_confirmation "password"
+    sequence(:email) { |n| "thedude#{n}@abides.com" }
+    password "password"
+    password_confirmation "password"
 
     trait :confirmed do
       after(:create) do |user|
