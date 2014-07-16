@@ -45,7 +45,7 @@ feature 'editing an app' do
     visit apps_path
     click_link "Edit"
     fill_in 'app[name]', with: ''
-  	click_button 'Save'
-  	expect( page ).to have_content('can\'t be blank')
+    click_button 'Save'
+    expect( page ).to have_content('can\'t be blank')
   end
 end
