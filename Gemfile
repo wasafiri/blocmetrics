@@ -2,18 +2,18 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 group :development, :test do
-	gem 'rspec-rails', '2.99.0'
-	gem 'factory_girl_rails', '4.4.1'
-	gem 'capybara', '2.3.0'
-	gem 'launchy' #this opens up the page capybara sees
-	gem 'thin', '1.6.2'
-	gem 'timecop'
-	gem 'active_model_serializers'
-	gem 'letter_opener'
-	gem 'database_cleaner'
-	gem 'email_spec'
-	gem 'pry'
-	gem 'spring'
+  gem 'rspec-rails', '2.99.0'
+  gem 'factory_girl_rails', '4.4.1'
+  gem 'capybara', '2.3.0'
+  gem 'launchy' #this opens up the page capybara sees
+  gem 'thin', '1.6.2'
+  gem 'timecop'
+  gem 'active_model_serializers'
+  gem 'letter_opener'
+  gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'pry'
+  gem 'spring'
 end
 
 gem 'rails', '4.1.4'

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe EventsController, :type => :api do
 
-	before do
+  before do
     Timecop.freeze(Time.now)
   end
 
@@ -22,7 +22,6 @@ describe EventsController, :type => :api do
   }
 
   it 'receives an event from a website' do
-
     post :create, params
 
     expect(response).to be_success
