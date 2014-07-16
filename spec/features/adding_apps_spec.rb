@@ -22,7 +22,7 @@ feature 'creating an App' do
     fill_in 'app_name', with: 'My personal website'
     fill_in 'app_desc', with: 'Contains my blog and other stuff'
     click_link_or_button 'Save'
-  	expect( page ).to have_content('App was added successfully.')
+    expect( page ).to have_content('App was added successfully.')
     expect( page ).to have_content('My personal website')
     expect( page ).to have_content('Contains my blog and other stuff')
   end
@@ -36,7 +36,7 @@ feature 'creating an App' do
     sign_in_as!(admin)
     click_link 'Create New App'
     fill_in 'app[name]', with: ''
-  	click_link_or_button 'Save'
-  	expect( page ).to have_content('can\'t be blank')
+    click_link_or_button 'Save'
+    expect( page ).to have_content('can\'t be blank')
   end
 end
