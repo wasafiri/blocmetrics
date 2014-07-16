@@ -22,7 +22,6 @@ describe EventsController, :type => :api do
   }
 
   it 'receives an event from a website' do
-
     post :create, params
 
     expect(response).to be_success

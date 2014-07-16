@@ -5,7 +5,7 @@ describe AppPolicy do
 
   context "for a visitor" do
     let(:user) { nil }
-    let(:app) { FactoryGirl.create(:app) }
+    let(:app) { FactoryGirl.create(:app)    }
 
     it { should     pundit_permit(:show)    }
     it { should_not pundit_permit(:create)  }
@@ -28,17 +28,17 @@ describe AppPolicy do
     context "touching other people's stuff" do
       let (:app) { build_stubbed :app, user: build(:user) }
 
-      it { should_not pundit_permit(:update)  }
-      it { should_not pundit_permit(:edit)    }
-      it { should_not pundit_permit(:destroy) }
+      it { should_not pundit_permit(:update)              }
+      it { should_not pundit_permit(:edit)                }
+      it { should_not pundit_permit(:destroy)             }
     end
 
     context "touching their own stuff" do
       let (:app) { build_stubbed :app, user: user }
 
-      it { should pundit_permit(:update)  }
-      it { should pundit_permit(:edit)    }
-      it { should pundit_permit(:destroy) } 
+      it { should pundit_permit(:update)          }
+      it { should pundit_permit(:edit)            }
+      it { should pundit_permit(:destroy)         }
     end
   end
 

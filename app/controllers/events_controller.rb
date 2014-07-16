@@ -3,7 +3,6 @@ class EventsController < ActionController::Base
 
   def create
     @event = Event.new(event_params)
-
     if @event.save
       render json: @event
     else

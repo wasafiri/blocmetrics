@@ -16,14 +16,14 @@ class AppsController < ApplicationController
 
 	def create
 	  @app = App.new(app_params)
-      authorize @app
+    authorize @app
 	  @app.user = current_user
-      if @app.save
-	      redirect_to app_path(@app), notice: "App was added successfully." and return
-      else
-	      flash[:error] = "Error adding app. Please try again."
-	      render :new and return
-	  end
+    if @app.save
+      redirect_to app_path(@app), notice: "App was added successfully." and return
+    else
+      flash[:error] = "Error adding app. Please try again."
+      render :new and return
+	  end #wyas elooking at something else
 	end
 
 	def edit

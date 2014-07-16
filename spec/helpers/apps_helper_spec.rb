@@ -3,8 +3,8 @@ require 'spec_helper'
 describe AppsHelper do
 
 	before do
-    	@app = App.new(name: "Example App", desc: "Does stuff", created_at: "2014-06-26 17:17:41 -0400")
-  	end
+    @app = App.new(name: "Example App", desc: "Does stuff", created_at: "2014-06-26 17:17:41 -0400")
+  end
 
 	subject { @app }
 

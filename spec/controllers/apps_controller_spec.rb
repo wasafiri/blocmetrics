@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe AppsController do
   @user = let(:user) { FactoryGirl.create(:user, :confirmed) }
-	
+
   before do
     @app = App.new(id: "5000", name: "Example App", desc: "Does stuff", user_id: user.id)
     @app.save
@@ -40,7 +40,6 @@ describe AppsController do
 
 	  it "successfully changes the app attributes" do
 	    put :update, id: @app.id, app: {name: "Renamed", desc: "Does other stuff good too", user_id: user.id}
-            puts @app.inspect
 	    @app.reload
 	    @app.name.should eq("Renamed")
 	    @app.desc.should eq("Does other stuff good too")
