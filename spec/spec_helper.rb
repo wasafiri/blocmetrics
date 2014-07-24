@@ -4,7 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require "email_spec"
-require "pundit/rspec"  # only include if you do not have custom pundit matcher 
+require "pundit/rspec"  # only include if you do not have custom pundit matcher
                         # that overrides :pundit
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }

@@ -6,7 +6,7 @@ group :development, :test do
   gem 'factory_girl_rails', '4.4.1'
   gem 'capybara', '2.3.0'
   gem 'launchy' #this opens up the page capybara sees
-  gem 'thin', '1.6.2'
+  # gem 'thin', '1.6.2' #thin has some sort of bug with cURL
   gem 'timecop'
   gem 'active_model_serializers'
   gem 'letter_opener'
@@ -14,6 +14,7 @@ group :development, :test do
   gem 'email_spec'
   gem 'pry'
   gem 'spring'
+  gem 'konacha'
 end
 
 gem 'rails', '4.1.4'
@@ -27,6 +28,6 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
+#gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
