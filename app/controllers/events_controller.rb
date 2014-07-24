@@ -9,7 +9,7 @@ class EventsController < ActionController::Base
 
   def create
     @app = App.find(event_params[:app_id])
-    raise ActiveRecord::RecordNotFound if @app.blank?
+    rescue_from ActiveRecord::RecordNotFound, :with => :not_found if !@app
     @event = @app.events.build(event_params)
     if @event.save
       render json: @event
@@ -26,18 +26,26 @@ class EventsController < ActionController::Base
 
   def cors_set_headers
     if request.method == :options
-      headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = 'POST, PUT, OPTIONS'
-      headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Content-Type'
-      headers['Access-Control-Max-Age'] = '86400'
+      common_cors_headers
       render(:text => '', :content_type => 'text/plain') and return
     end
   end
 
   def cors_set_access_control_headers
+    common_cors_headers
+  end
+
+  def common_cors_headers
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
     headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Content-Type'
     headers['Access-Control-Max-Age'] = "86400"
+  end
+
+  def not_found
+    respond_to do |format|
+      format.html { render :file => File.join(Rails.root, 'public', '404.html') }
+      format.json { render :text => '{"error": "App not found."}' }
+    end
   end
 end

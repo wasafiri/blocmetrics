@@ -56,7 +56,7 @@ describe EventsController, :type => :api do
     end
 
     it 'only processes events from registered apps' do
-      expect {post :create, nonexistentapp_params, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' } }.to raise_error(ActiveRecord::RecordNotFound)
+      expect {post :create, nonexistentapp_params, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' } }.to raise_error(ActiveRecord::RecordNotFound, 'Couldn\'t find App with \'id\'=2')
     end
   end
 end
