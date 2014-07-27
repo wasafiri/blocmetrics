@@ -1,4 +1,5 @@
 var clientIP;
+window.bm_request = new XMLHttpRequest();
 
 var Blocmetrics_track = {}
 Blocmetrics_track.postEvent = function() {
@@ -27,7 +28,6 @@ function getIP(data) {
   var data = JSON.stringify(bm_event);
   console.log(data)
 
-  var bm_request = new XMLHttpRequest();
       bm_request.open("POST", "http://localhost:3000/events.json", true);
       bm_request.setRequestHeader('Content-Type', 'application/json');
       bm_request.onreadystatechange = function() {};

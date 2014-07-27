@@ -2,6 +2,7 @@ class EventsController < ActionController::Base
   respond_to :json
   before_filter :cors_set_headers
   after_filter :cors_set_access_control_headers
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   def options
     render(:text => '', :content_type => 'text/plain')
@@ -9,7 +10,6 @@ class EventsController < ActionController::Base
 
   def create
     @app = App.find(event_params[:app_id])
-    rescue_from ActiveRecord::RecordNotFound, :with => :not_found if !@app
     @event = @app.events.build(event_params)
     if @event.save
       render json: @event
@@ -43,9 +43,6 @@ class EventsController < ActionController::Base
   end
 
   def not_found
-    respond_to do |format|
-      format.html { render :file => File.join(Rails.root, 'public', '404.html') }
-      format.json { render :text => '{"error": "App not found."}' }
-    end
+    render :file => "#{Rails.root}/public/404.html", :status => 404, :layout => false
   end
 end

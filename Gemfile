@@ -14,6 +14,7 @@ group :development, :test do
   gem 'pry'
   gem 'spring'
   gem 'konacha'
+  #gem "sinon-rails"
 end
 
 gem 'rails', '4.1.4'

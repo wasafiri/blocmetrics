@@ -10,8 +10,9 @@ describe EventsController, :type => :api do
     Timecop.return
   end
 
-  describe 'POST /events.json' do
-    let(:app) { FactoryGirl.create :app }
+  let(:app) { FactoryGirl.create :app }
+
+  describe 'Successful POST /events.json' do
 
     let(:params) do
       {
@@ -24,22 +25,11 @@ describe EventsController, :type => :api do
       }
     end
 
-    let(:nonexistentapp_params) do
-      {
-        event: {
-          app_id: "2",
-          ip_address: '200.1.1.1',
-          web_property_id: '100',
-          action: 'some action'
-        }
-      }
-    end
-
     subject do
       post :create, params, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
     end
 
-    it 'success' do
+    it 'returns success message' do
       subject
       expect(response).to be_success
     end
@@ -55,8 +45,43 @@ describe EventsController, :type => :api do
       expect(event.action).to eql 'some action'
     end
 
+    it 'is formatted correctly' do
+      subject
+      json = JSON.parse(response.body)
+      json.should include
+        {"event"=>{"id"=>1,
+        "ip_address"=>"200.1.1.1",
+        "web_property_id"=>"100",
+        "action"=>"some action"}}
+    end
+  end
+
+  describe 'Unuccessful POST /events.json' do
+
+    let(:nonexistentapp_params) do
+      {
+        event: {
+          app_id: "2",
+          ip_address: '200.1.1.1',
+          web_property_id: '100',
+          action: 'some action'
+          }
+        }
+    end
+
+    subject do
+      post :create, nonexistentapp_params, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+    end
+
     it 'only processes events from registered apps' do
-      expect {post :create, nonexistentapp_params, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' } }.to raise_error(ActiveRecord::RecordNotFound, 'Couldn\'t find App with \'id\'=2')
+      expect(Event.count).to eql 0
+      post :create, nonexistentapp_params, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+      expect(Event.count).to eql 0
+    end
+
+    it 'returns a 404 response if it cannot find an app belonging to the passed app_id' do
+      post :create, nonexistentapp_params, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+      expect(response.status).to eq(404)
     end
   end
 end
