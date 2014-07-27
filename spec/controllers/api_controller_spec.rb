@@ -75,12 +75,12 @@ describe EventsController, :type => :api do
 
     it 'only processes events from registered apps' do
       expect(Event.count).to eql 0
-      post :create, nonexistentapp_params, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+      subject
       expect(Event.count).to eql 0
     end
 
     it 'returns a 404 response if it cannot find an app belonging to the passed app_id' do
-      post :create, nonexistentapp_params, { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+      subject
       expect(response.status).to eq(404)
     end
   end
