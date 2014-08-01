@@ -1,25 +1,38 @@
 //= require spec_helper
 //= require js_webstub
 
-describe("Blocmetrics_track#postEvent", function() {
-  it("posts to events.json", function() {
-    var sent = false;
-    XMLHttpRequest.prototype.send = function() {
-      sent = true;
-    }
-    Blocmetrics_track.postEvent();
+describe("Blocmetrics#pushEvent", function(){
+  it("should register the event", function(){
+    var httpMock = jasmine.createSpyObj("httpMock", ["post"]);
+    var tracker = new Blocmetrics(httpMock);
 
-    setTimeout(function() {
-      sent.should.equal(true);
-    }, 500);
+    tracker.pageViewed();
+
+    expect(httpMock.post.calls.argsFor(0)).toEqual([
+      "/events.json",
+      {
+        event: {
+          app_id: 12736,
+          ip_address: "200.1.1.1",
+          web_property_id: 100,
+          action: "Page View"
+        }
+      }]
+    );
   });
-
-  it(“posts proper payload to events.json”, function() { })
-
 });
 
-// $.ajax({url:"http://localhost:3000/events.json",Content-Type: 'application/json',type:"POST",
-//         data:"{'event':{'app_id':1, 'ip_address':'98.125.170.140', 'action':'Page View'}}"}
-//        , success(result){
-//        var data=result.d;
-//        };
+// describe("Blocmetrics#getClientIP", function(){
+//   it("should fetch the client IP", function(){
+//     var ipProvider = jasmine.createSpy('ipProvider').andReturn({ip: '192.168.1.1'});
+//     var track = new Blocmetrics.ClientTrack(ipProvider);
+
+//     // call it twice to verify that we're just triggering the IP API just once
+//     track.getClientIP();
+//     track.getClientIP();
+
+//     // test that we cached the value
+//     expect(ipProvider.calls.length).toEqual(1);
+//   });
+// });
+

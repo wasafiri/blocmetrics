@@ -13,8 +13,9 @@ group :development, :test do
   gem 'email_spec'
   gem 'pry'
   gem 'spring'
-  gem 'konacha'
-  #gem "sinon-rails"
+  gem 'jasmine-rails'
+  gem 'jasmine-jquery-rails'
+  gem 'selenium-webdriver'
 end
 
 gem 'rails', '4.1.4'
