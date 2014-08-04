@@ -1,8 +1,8 @@
 //= require spec_helper
 //= require js_webstub
 
-describe("Blocmetrics#pushEvent", function(){
-  it("should register the event", function(){
+describe("Blocmetrics#pageViewed", function(){
+  it("should register the page view", function(){
     var httpMock = jasmine.createSpyObj("httpMock", ["post"]);
     var tracker = new Blocmetrics(httpMock);
 
